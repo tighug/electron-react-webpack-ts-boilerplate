@@ -21,12 +21,11 @@ async function createWindow() {
 
   if (process.env.NODE_ENV === "development") {
     await installExtensions();
-    // process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = "1";
-    win.loadURL("http://localhost:3000/dist/index.html");
+    process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = "1";
     win.webContents.openDevTools();
-  } else {
-    win.loadFile("./index.html");
   }
+
+  win.loadURL(`file://${__dirname}/../renderer/index.html`);
 }
 
 app.allowRendererProcessReuse = true;
