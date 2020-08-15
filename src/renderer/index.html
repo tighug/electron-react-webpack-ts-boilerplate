@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Boilerplate for Electron + React + Webpack + TypeScript.</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      if (typeof process === "object") {
+        const scripts = [];
+
+        if (process.env.NODE_ENV === "development") {
+          scripts.push("http://localhost:3000/dist/renderer.dev.js");
+        } else {
+          scripts.push("./renderer.prod.js");
+        }
+
+        if (scripts.length) {
+          document.write(
+            scripts
+              .map((script) => `<script defer src="${script}"><\/script>`)
+              .join("")
+          );
+        }
+      }
+    </script>
+  </body>
+</html>

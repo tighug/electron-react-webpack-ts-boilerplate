@@ -1,17 +1,18 @@
-import path from "path";
-import webpack from "webpack";
-import { merge } from "webpack-merge";
-import base from "./webpack.config.base";
-import { spawn } from "child_process";
+/* eslint-disable @typescript-eslint/no-var-requires */
+const path = require("path");
+const webpack = require("webpack");
+const { merge } = require("webpack-merge");
+const base = require("./webpack.config.base");
+const { spawn } = require("child_process");
 
 const port = 3000;
 const publicPath = `http://localhot:${3000}/dist`;
 
-export default merge(base, {
+module.exports = merge(base, {
   target: "electron-renderer",
   mode: "development",
 
-  entry: "./src/renderer/index.tsx",
+  entry: path.join(__dirname, "..", "/src/renderer/index.tsx"),
   output: {
     publicPath,
     filename: "renderer.dev.js",
@@ -51,7 +52,6 @@ export default merge(base, {
   devServer: {
     port,
     publicPath,
-    contentBase: path.join(__dirname, "dist"),
     headers: { "Access-Control-Allow-Origin": "*" },
     historyApiFallback: {
       verbose: true,
@@ -66,6 +66,7 @@ export default merge(base, {
     stats: "errors-only",
 
     before() {
+      console.log("Starting Main Process...");
       spawn("npm", ["run", "start-main-dev"], {
         shell: true,
         env: process.env,

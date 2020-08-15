@@ -1,12 +1,13 @@
-import path from "path";
-import { merge } from "webpack-merge";
-import base from "./webpack.config.base";
+/* eslint-disable @typescript-eslint/no-var-requires */
+const path = require("path");
+const { merge } = require("webpack-merge");
+const base = require("./webpack.config.base");
 
-export default merge(base, {
+module.exports = merge(base, {
   target: "electron-main",
   mode: "production",
 
-  entry: "./src/main/index.ts",
+  entry: path.join(__dirname, "..", "src/main/index.ts"),
   output: {
     path: path.join(__dirname, "build"),
     filename: "main.prod.js",

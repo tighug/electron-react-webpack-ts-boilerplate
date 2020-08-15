@@ -1,14 +1,15 @@
-import path from "path";
-import { merge } from "webpack-merge";
-import base from "./webpack.config.base";
+/* eslint-disable @typescript-eslint/no-var-requires */
+const path = require("path");
+const { merge } = require("webpack-merge");
+const base = require("./webpack.config.base");
 
-export default merge(base, {
+module.exports = merge(base, {
   target: "electron-renderer",
   mode: "production",
 
-  entry: "./src/renderer/index.tsx",
+  entry: path.join(__dirname, "..", "src/renderer/index.tsx"),
   output: {
-    path: path.join(__dirname, "dist"),
+    path: path.join(__dirname, "..", "dist"),
     publicPath: "./dist/",
     filename: "renderer.prod.js",
   },
