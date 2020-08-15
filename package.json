@@ -7,6 +7,16 @@
   "author": "tighug <kapuriko123@gmail.com>",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "build": "concurrently \"yarn build-main\" \"yarn build-renderer\"",
+    "build-main": "cross-env NODE_ENV=production webpack --config ./webpack/webpack.config.main.prod.js",
+    "build-renderer": "cross-env NODE_ENV=production webpack --config ./webpack/webpack.config.renderer.prod.js",
+    "dev": "yarn start-renderer-dev",
+    "prestart": "yarn build",
+    "start": "cross-env NODE_ENV=production electron ./dist/main.prod.js",
+    "start-main-dev": "cross-env NODE_ENV=development electron -r ./scripts/BabelRegister.js",
+    "start-rederer-dev": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack/webpack.config.renderer.dev.js"
+  },
   "dependencies": {
     "@reduxjs/toolkit": "^1.4.0",
     "react": "^16.13.1",
