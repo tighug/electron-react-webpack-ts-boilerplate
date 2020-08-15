@@ -7,7 +7,7 @@ module.exports = merge(base, {
   target: "electron-main",
   mode: "production",
 
-  entry: "./src/main/index.ts",
+  entry: path.join(__dirname, "..", "src/main/index.ts"),
   output: {
     path: path.join(__dirname, "build"),
     filename: "main.prod.js",

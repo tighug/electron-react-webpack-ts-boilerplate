@@ -7,9 +7,9 @@ module.exports = merge(base, {
   target: "electron-renderer",
   mode: "production",
 
-  entry: "./src/renderer/index.tsx",
+  entry: path.join(__dirname, "..", "src/renderer/index.tsx"),
   output: {
-    path: path.join(__dirname, "dist"),
+    path: path.join(__dirname, "..", "dist"),
     publicPath: "./dist/",
     filename: "renderer.prod.js",
   },

@@ -12,7 +12,7 @@ module.exports = merge(base, {
   target: "electron-renderer",
   mode: "development",
 
-  entry: "./src/renderer/index.tsx",
+  entry: path.join(__dirname, "..", "/src/renderer/index.tsx"),
   output: {
     publicPath,
     filename: "renderer.dev.js",
@@ -52,7 +52,6 @@ module.exports = merge(base, {
   devServer: {
     port,
     publicPath,
-    contentBase: path.join(__dirname, "dist"),
     headers: { "Access-Control-Allow-Origin": "*" },
     historyApiFallback: {
       verbose: true,
@@ -67,6 +66,7 @@ module.exports = merge(base, {
     stats: "errors-only",
 
     before() {
+      console.log("Starting Main Process...");
       spawn("npm", ["run", "start-main-dev"], {
         shell: true,
         env: process.env,
