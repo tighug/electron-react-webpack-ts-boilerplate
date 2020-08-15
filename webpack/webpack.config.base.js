@@ -16,5 +16,6 @@ module.exports = {
 
   resolve: {
     extensions: [".ts", ".tsx", ".json", ".js", ".jsx"],
+    alias: { "react-dom": "@hot-loader/react-dom" },
   },
 };
