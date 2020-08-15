@@ -15,7 +15,7 @@
     "prestart": "yarn build",
     "start": "cross-env NODE_ENV=production electron ./dist/main.prod.js",
     "start-main-dev": "cross-env NODE_ENV=development electron -r ./scripts/BabelRegister.js",
-    "start-rederer-dev": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack/webpack.config.renderer.dev.js"
+    "start-renderer-dev": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack/webpack.config.renderer.dev.js"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.4.0",
