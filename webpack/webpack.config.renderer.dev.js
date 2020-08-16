@@ -6,7 +6,7 @@ const base = require("./webpack.config.base");
 const { spawn } = require("child_process");
 
 const port = 3000;
-const publicPath = `http://localhot:${3000}/dist`;
+const publicPath = `http://localhost:${3000}/dist/`;
 
 module.exports = merge(base, {
   target: "electron-renderer",
