@@ -11,5 +11,5 @@ module.exports = {
     "@babel/preset-typescript",
     "@babel/preset-react",
   ],
-  plugins: ["babel-plugin-styled-components"],
+  plugins: ["react-hot-loader/babel", "babel-plugin-styled-components"],
 };
