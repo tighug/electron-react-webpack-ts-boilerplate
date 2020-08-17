@@ -1,14 +1,9 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { app, BrowserWindow } from "electron";
-
-async function installExtensions() {
-  const installer = require("electron-devtools-installer");
-  const extensions = ["REACT_DEVELOPER_TOOLS", "REDUX_DEVTOOLS"];
-
-  return Promise.all(
-    extensions.map((name) => installer.default(installer[name]))
-  ).catch(console.log);
-}
+import installExtension, {
+  REACT_DEVELOPER_TOOLS,
+  REDUX_DEVTOOLS,
+} from "electron-devtools-installer";
 
 async function createWindow() {
   const win = new BrowserWindow({
@@ -20,12 +15,11 @@ async function createWindow() {
   });
 
   if (process.env.NODE_ENV === "development") {
-    await installExtensions();
+    await installExtension([REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS]);
     process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = "1";
-    win.webContents.openDevTools();
   }
 
-  win.loadURL(`file://${__dirname}/../renderer/index.html`);
+  await win.loadURL(`file://${__dirname}/../renderer/index.html`);
 }
 
 app.allowRendererProcessReuse = true;
