@@ -8,6 +8,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
+    "postinstall": "electron-builder install-app-deps",
     "build": "concurrently \"yarn build-main\" \"yarn build-renderer\"",
     "build-main": "cross-env NODE_ENV=production webpack --config ./webpack/webpack.config.main.prod.js",
     "build-renderer": "cross-env NODE_ENV=production webpack --config ./webpack/webpack.config.renderer.prod.js",
