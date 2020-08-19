@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require("path");
 const webpack = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { merge } = require("webpack-merge");
 const base = require("./webpack.config.base");
 const { spawn } = require("child_process");
@@ -15,7 +16,7 @@ module.exports = merge(base, {
   entry: path.join(__dirname, "..", "/src/renderer/index.tsx"),
   output: {
     publicPath,
-    filename: "renderer.dev.js",
+    filename: "renderer.js",
   },
 
   module: {
@@ -46,6 +47,9 @@ module.exports = merge(base, {
   plugins: [
     new webpack.HotModuleReplacementPlugin({
       multiStep: true,
+    }),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, "..", "/src/renderer/index.html"),
     }),
   ],
 

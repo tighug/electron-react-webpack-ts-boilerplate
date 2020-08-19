@@ -2,6 +2,7 @@
 const path = require("path");
 const { merge } = require("webpack-merge");
 const base = require("./webpack.config.base");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = merge(base, {
   target: "electron-renderer",
@@ -10,8 +11,7 @@ module.exports = merge(base, {
   entry: path.join(__dirname, "..", "src/renderer/index.tsx"),
   output: {
     path: path.join(__dirname, "..", "dist"),
-    publicPath: "./dist/",
-    filename: "renderer.prod.js",
+    filename: "renderer.js",
   },
 
   module: {
@@ -38,4 +38,10 @@ module.exports = merge(base, {
       },
     ],
   },
+
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, "..", "/src/renderer/index.html"),
+    }),
+  ],
 });
