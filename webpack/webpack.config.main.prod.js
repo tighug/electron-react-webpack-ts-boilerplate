@@ -12,4 +12,9 @@ module.exports = merge(base, {
     path: path.join(__dirname, "..", "dist"),
     filename: "main.js",
   },
+
+  node: {
+    __dirname: false,
+    __filename: false,
+  },
 });
