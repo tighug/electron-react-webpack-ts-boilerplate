@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../store";
 import { ToDo, addTodo } from "../store/todos";
 
-export default function ToDoPages() {
+export default function ListPage() {
   const todos = useSelector<RootState, ToDo[]>((state) => state.todos);
   const dispatch = useDispatch();
 

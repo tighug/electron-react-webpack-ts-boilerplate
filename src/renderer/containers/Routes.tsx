@@ -6,8 +6,12 @@ import HomePage from "./HomePage";
 export default function Routes() {
   return (
     <Switch>
-      <Route path="/" component={HomePage} />
-      <Route path="/todos" component={ListPage} />
+      <Route path="/list">
+        <ListPage />
+      </Route>
+      <Route path="/">
+        <HomePage />
+      </Route>
     </Switch>
   );
 }
