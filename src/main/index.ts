@@ -17,9 +17,10 @@ async function createWindow() {
   if (process.env.NODE_ENV === "development") {
     await installExtension([REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS]);
     process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = "1";
+    await win.loadURL("http://localhost:3000/dist/index.html");
+  } else {
+    await win.loadFile("index.html");
   }
-
-  await win.loadURL(`file://${__dirname}/../renderer/index.html`);
 }
 
 app.allowRendererProcessReuse = true;
