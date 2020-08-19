@@ -1,14 +1,20 @@
-import { hot } from "react-hot-loader";
 import React from "react";
 import { Provider } from "react-redux";
-import store from "../store";
-import ToDosPage from "./ToDosPage";
+import { hot } from "react-hot-loader";
+import { Store } from "../store";
+import Routes from "./Routes";
+import { HashRouter } from "react-router-dom";
 
-function Root() {
+type RootProps = {
+  store: Store;
+};
+
+function Root({ store }: RootProps) {
   return (
     <Provider store={store}>
-      <div>Hello, World!</div>
-      <ToDosPage />
+      <HashRouter>
+        <Routes />
+      </HashRouter>
     </Provider>
   );
 }
