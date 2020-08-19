@@ -19,7 +19,7 @@ async function createWindow() {
     process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = "1";
     await win.loadURL("http://localhost:3000/dist/index.html");
   } else {
-    await win.loadFile("index.html");
+    await win.loadURL(`file://${__dirname}/index.html`);
   }
 }
 
