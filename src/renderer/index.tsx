@@ -1,10 +1,9 @@
 import React from "react";
 import { render } from "react-dom";
 import "./index.css";
+import Root from "./containers/Root";
+import store from "./store";
 
 document.addEventListener("DOMContentLoaded", () => {
-  // eslint-disable-next-line global-require
-  const Root = require("./containers/Root").default;
-
-  render(<Root />, document.getElementById("root"));
+  render(<Root store={store} />, document.getElementById("root"));
 });

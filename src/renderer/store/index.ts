@@ -6,4 +6,8 @@ const reducer = combineReducers({ todos: todosReducer });
 
 export type RootState = ReturnType<typeof reducer>;
 
-export default configureStore({ reducer });
+const configuredStore = configureStore({ reducer });
+
+export type Store = typeof configuredStore;
+
+export default configuredStore;
