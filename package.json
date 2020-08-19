@@ -2,7 +2,7 @@
   "name": "electron-react-webpack-ts-boilerplate",
   "version": "0.0.0",
   "description": "Boilerplate for Electron + React + Webpack + TypeScript.",
-  "main": "index.js",
+  "main": "dist/main.js",
   "repository": "https://github.com/tighug/electron-react-webpack-ts-boilerplate.git",
   "author": "tighug <kapuriko123@gmail.com>",
   "license": "MIT",
@@ -16,7 +16,13 @@
     "prestart": "yarn build",
     "start": "cross-env NODE_ENV=production electron ./dist/main.js",
     "start-main-dev": "cross-env NODE_ENV=development electron -r ./scripts/BabelRegister.js ./src/main/index.ts",
-    "start-renderer-dev": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack/webpack.config.renderer.dev.js"
+    "start-renderer-dev": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack/webpack.config.renderer.dev.js",
+    "package": "yarn build && electron-builder build --publish never",
+    "package-all": "yarn build && electron-builder build -mwl",
+    "package-ci": "yarn postinstall && yarn build && electron-builder --publish always",
+    "package-mac": "yarn build && electron-builder build --mac",
+    "package-linux": "yarn build && electron-builder build --linux",
+    "package-win": "yarn build && electron-builder build --win --x64"
   },
   "dependencies": {
     "@hot-loader/react-dom": "^16.13.0",
