@@ -1,6 +1,6 @@
 {
   "name": "electron-react-webpack-ts-boilerplate",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Boilerplate for Electron + React + Webpack + TypeScript.",
   "main": "dist/main.js",
   "repository": "https://github.com/tighug/electron-react-webpack-ts-boilerplate.git",
